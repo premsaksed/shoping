@@ -7,16 +7,7 @@
 ini_set('display_errors', 1);
 error_reporting(~0);
 
-$serverName = "localhost";
-$userName = "root";
-$userPassword = "root";
-$dbName = "mydatabase";
-
-$objCon = mysqli_connect($serverName,$userName,$userPassword,$dbName);
-if (!$objCon) {
-    echo $objCon->connect_error;
-    exit();
-}
+include_once '../connect.php';
 
 $strSQL = "SELECT * FROM product";
 $objQuery = mysqli_query($objCon,$strSQL);

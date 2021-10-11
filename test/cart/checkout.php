@@ -14,18 +14,10 @@ if(!isset($_SESSION["intLine"]))
 	exit();
 }
 
-$serverName = "localhost";
-$userName = "root";
-$userPassword = "root";
-$dbName = "mydatabase";
+include_once '../connect.php';
 
-$objCon = mysqli_connect($serverName,$userName,$userPassword,$dbName);
-if (!$objCon) {
-    echo $objCon->connect_error;
-    exit();
-}
+
 ?>
-  <form action="update.php" method="post">
 <table width="400"  border="1">
   <tr>
     <td width="101">ProductID</td>
@@ -33,7 +25,6 @@ if (!$objCon) {
     <td width="82">Price</td>
     <td width="79">Qty</td>
     <td width="79">Total</td>
-    <td width="10">Del</td>
   </tr>
   <?php
   $Total = 0;
@@ -53,32 +44,37 @@ if (!$objCon) {
 		<td><?=$_SESSION["strProductID"][$i];?></td>
 		<td><?=$objResult["ProductName"];?></td>
 		<td><?=$objResult["Price"];?></td>
-		<td><input type="text" name="txtQty<?php echo $i;?>" value="<?php echo $_SESSION["strQty"][$i];?>" size="2"></td>
+		<td><?=$_SESSION["strQty"][$i];?></td>
 		<td><?=number_format($Total,2);?></td>
-		<td><a href="delete.php?Line=<?=$i;?>">x</a></td>
 	  </tr>
 	  <?php
 	  }
   }
   ?>
 </table>
-<br>
-<table width="400"  border="0">
-  <tr>
-  <td><input type="submit" value="Update"></td>
-  <td align="right">Sum Total <?php echo number_format($SumTotal,2);?></td>
-  </tr>
+Sum Total <?php echo number_format($SumTotal,2);?>
+<br><br>
+<form name="form1" method="post" action="save_checkout.php">
+  <table width="304" border="1">
+    <tr>
+      <td width="71">Name</td>
+      <td width="217"><input type="text" name="txtName"></td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td><textarea name="txtAddress"></textarea></td>
+    </tr>
+    <tr>
+      <td>Tel</td>
+      <td><input type="text" name="txtTel"></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td><input type="text" name="txtEmail"></td>
+    </tr>
   </table>
+    <input type="submit" name="Submit" value="Submit">
 </form>
-<br><a href="product.php">Go to Product</a>
-<?php
-	if($SumTotal > 0)
-	{
-?>
-	| <a href="checkout.php">CheckOut</a>
-<?php
-	}
-?>
 <?php
 mysqli_close($objCon);
 ?>

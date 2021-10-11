@@ -4,16 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <?php
-$serverName = "localhost";
-$userName = "root";
-$userPassword = "root";
-$dbName = "mydatabase";
-
-$objCon = mysqli_connect($serverName,$userName,$userPassword,$dbName);
-if (!$objCon) {
-	echo $objCon->connect_error;
-	exit();
-}
+include_once '../connect.php';
 
 $strSQL = "SELECT * FROM orders WHERE OrderID = '".$_GET["OrderID"]."' ";
 $objQuery = mysqli_query($objCon,$strSQL);

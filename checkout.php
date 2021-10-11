@@ -14,16 +14,7 @@ if(!isset($_SESSION["intLine"]))
 	exit();
 }
 
-$serverName = "localhost";
-$userName = "root";
-$userPassword = "root";
-$dbName = "mydatabase";
-
-$objCon = mysqli_connect($serverName,$userName,$userPassword,$dbName);
-if (!$objCon) {
-    echo $objCon->connect_error;
-    exit();
-}
+include_once 'connect.php';
 ?>
 <table width="400"  border="1">
   <tr>

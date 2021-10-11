@@ -1,16 +1,7 @@
 <?php
 session_start();
 
-$serverName = "localhost";
-$userName = "root";
-$userPassword = "root";
-$dbName = "mydatabase";
-
-$objCon = mysqli_connect($serverName,$userName,$userPassword,$dbName);
-if (!$objCon) {
-	echo $objCon->connect_error;
-	exit();
-}
+include_once '../connect.php';
 
   $Total = 0;
   $SumTotal = 0;
