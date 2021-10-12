@@ -7,7 +7,9 @@ include_once 'head.php';
 
 if (!isset($_SESSION["intLine"])) {
 	echo "Cart Empty";
+include_once 'footer.php';
 	exit();
+	
 }
 
 include_once 'connect.php';
@@ -61,17 +63,23 @@ include_once 'connect.php';
 		</table>
 </form>
 </div>
-<br><a href="product.php">Go to Product</a>
+<div align="center">
+
+
+<br><a class="btn btn-warning" href="index.php">ซื้อสินค้าต่อ</a>
 <?php
 if ($SumTotal > 0) {
 ?>
-	| <a href="checkout.php">CheckOut</a>
+	| <a class="btn btn-primary" href="checkout.php">สั่งซื้อ</a>
+	</div>
+	<br><br>
 <?php
 }
 ?>
 <?php
 mysqli_close($objCon);
 ?>
+
 <?php
 include_once 'footer.php';
 ?>

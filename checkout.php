@@ -1,11 +1,8 @@
 <?php
 session_start();
+include_once 'head.php';
 ?>
-<html>
-<head>
-<title>ThaiCreate.Com</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-</head>
+
 <?php
 
 if(!isset($_SESSION["intLine"]))
@@ -16,14 +13,17 @@ if(!isset($_SESSION["intLine"]))
 
 include_once 'connect.php';
 ?>
-<table width="400"  border="1">
-  <tr>
+<div class="mt-5 mx-5">
+
+
+<table class="table" width="400"  border="0">
+<thead> <tr>
     <td width="101">ProductID</td>
     <td width="82">ProductName</td>
     <td width="82">Price</td>
     <td width="79">Qty</td>
     <td width="79">Total</td>
-  </tr>
+  </tr></thead>
   <?php
   $Total = 0;
   $SumTotal = 0;
@@ -50,33 +50,39 @@ include_once 'connect.php';
   }
   ?>
 </table>
-Sum Total <?php echo number_format($SumTotal,2);?>
-<br><br>
+</div>
+<div class="mt-2 mx-5" align="right"> Sum Total <?php echo number_format($SumTotal,2);?></div>
+
+<div class="form-group mt-5 mx-5">
 <form name="form1" method="post" action="save_checkout.php">
-  <table width="304" border="1">
+  <table  width="20%" border="0">
     <tr>
-      <td width="71">Name</td>
-      <td width="217"><input type="text" name="txtName"></td>
+      <td >ชื่อ</td>
+      <td ><input class="form-control" type="text" name="txtName" required></td>
     </tr>
     <tr>
-      <td>Address</td>
-      <td><textarea name="txtAddress"></textarea></td>
+      <td>ที่อยู่</td>
+      <td><textarea  class="form-control" name="txtAddress" required></textarea></td>
     </tr>
     <tr>
-      <td>Tel</td>
-      <td><input type="text" name="txtTel"></td>
+      <td>เบอร์โทร์</td>
+      <td><input class="form-control" type="text" name="txtTel" required></td>
     </tr>
     <tr>
       <td>Email</td>
-      <td><input type="text" name="txtEmail"></td>
+      <td><input class="form-control" type="text" name="txtEmail" required></td>
     </tr>
   </table>
-    <input type="submit" name="Submit" value="Submit">
+  <br>
+    <input class="btn btn-success" type="submit" name="Submit" value="Submit">
 </form>
+</div>
+<p> </p>
 <?php
 mysqli_close($objCon);
 ?>
 </body>
 </html>
 
-<?php /* This code download from www.ThaiCreate.Com */ ?>
+<?php include_once 'footer.php';
+/* This code download from www.ThaiCreate.Com */ ?>

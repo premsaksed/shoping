@@ -71,7 +71,7 @@ if (!$objQuery) {
 
 
 
-<br><br><a href="show.php">View Cart</a> | <a href="clear.php">Clear Cart</a>
+
 <?php
 mysqli_close($objCon);
 ?>

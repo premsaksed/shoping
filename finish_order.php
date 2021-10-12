@@ -1,14 +1,16 @@
-<html>
-<head>
-<title>ThaiCreate.Com</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-</head>
+<?php 
+include_once 'head.php';
+?>
 <body>
-Finish Your Order. <br><br>
 
-<a href="view_order.php?OrderID=<?php echo $_GET["OrderID"];?>">View Order</a>
-
+<div class="mt-3" align="center">
+    ซื้อสินค้าเสร็จสิ้น <br><br>
+<a class="btn btn-success" href="view_order.php?OrderID=<?php echo $_GET["OrderID"];?>">ดูคำสั่งซื้อ</a>
+</div>
+<br><br>
 </body>
 </html>
 
-<?php /* This code download from www.ThaiCreate.Com */ ?>
+<?php 
+include_once 'footer.php';
+ ?>
