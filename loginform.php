@@ -12,13 +12,13 @@ include_once 'head.php';
               <h3 class="login-heading mb-4">เข้าสู่ระบบ</h3>
 
               <!-- Sign In Form -->
-              <form>
+              <form action="login.php" method="post">
                 <div class="form-floating mb-3">
-                  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                  <input type="text" name="Username" class="form-control" id="floatingInput" placeholder="">
                   <label for="floatingInput">ชื่อผู้ใช้งาน</label>
                 </div>
                 <div class="form-floating mb-3">
-                  <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                  <input type="password" name="Password"class="form-control" id="floatingPassword" placeholder="Password">
                   <label for="floatingPassword">รหัสผ่าน</label>
                 </div>
 
