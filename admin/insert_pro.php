@@ -5,7 +5,7 @@ $detailed = $_POST['detailed'];
 $Price= $_POST['Price'];
 
 $sql = "INSERT INTO product (ProductName, detailed, Price)
-VALUES ($ProductName, $detailed, $Price)";
+VALUES ('$ProductName', '$detailed', '$Price')";
 
 if ($con->query($sql) === TRUE) {
   echo "New record created successfully";

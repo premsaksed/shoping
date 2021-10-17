@@ -37,7 +37,8 @@ include_once 'head.php';
                 <h3 class="card-title">Bordered Table</h3>
               </div>
               <?php
-              $sql = "SELECT * FROM money ";
+              $sql = "SELECT money.OrderID,user.Firstname,user.Lastname ,money.date ,money.time,money.money,money.Status
+              FROM money INNER JOIN user ON money.ID_user = user.ID";
               $result = $con->query($sql);
               
               if ($result->num_rows > 0) {
@@ -66,7 +67,7 @@ include_once 'head.php';
                     <tr>
                     <td><?php $run = $run+1;  echo $run; ?></td>
                     <td><?php echo $row["OrderID"]; ?></td>
-                      <td><?php echo $row["ID_user"]; ?></td>
+                      <td><?php echo $row["Firstname"].' '.$row["Lastname"]; ?></td>
                       <td><?php echo $row["date"]; ?></td>
                       <td><?php echo $row["time"]; ?></td>
                       <td><?php echo $row["money"]; ?></td>

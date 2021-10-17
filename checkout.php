@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once 'head.php';
+include_once 'con.php';
 ?>
 
 <?php
@@ -53,24 +54,32 @@ include_once 'connect.php';
 </div>
 <div class="mt-2 mx-5" align="right"> Sum Total <?php echo number_format($SumTotal,2);?></div>
 
+
+<?php 
+$id=$_SESSION["UserID"];
+$result = $con->query("SELECT * FROM user where ID = $id");
+                                $row1 = $result->fetch_row();
+                                // echo $row1[6];
+                                ?>
+
 <div class="form-group mt-5 mx-5">
 <form name="form1" method="post" action="save_checkout.php">
   <table  width="20%" border="0">
     <tr>
       <td >ชื่อ</td>
-      <td ><input class="form-control" type="text" name="txtName" required></td>
+      <td ><input class="form-control" type="text" value="<?php echo $row1[3].' '.$row1[4]; ?>" name="txtName" required></td>
     </tr>
     <tr>
       <td>ที่อยู่</td>
-      <td><textarea  class="form-control" name="txtAddress" required></textarea></td>
+      <td><textarea  class="form-control" name="txtAddress"  required> <?php echo $row1[6]; ?> </textarea></td>
     </tr>
     <tr>
       <td>เบอร์โทร์</td>
-      <td><input class="form-control" type="text" name="txtTel" required></td>
+      <td><input class="form-control" type="text" value="<?php echo $row1[7]; ?>" name="txtTel" required></td>
     </tr>
     <tr>
       <td>Email</td>
-      <td><input class="form-control" type="text" name="txtEmail" required></td>
+      <td><input class="form-control" type="text" value="<?php echo $row1[8]; ?>" name="txtEmail" required></td>
     </tr>
   </table>
   <br>

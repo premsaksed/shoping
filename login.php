@@ -18,6 +18,9 @@ session_start();
                       $_SESSION["UserID"] = $row["ID"];
                       $_SESSION["User"] = $row["Firstname"]." ".$row["Lastname"];
                       $_SESSION["Userlevel"] = $row["Userlevel"];
+                      $_SESSION["Address"] = $row["Address"];
+                      $_SESSION["Tel"] = $row["Tel"];
+                      $_SESSION["Email"] = $row["Email"];
 
                       if($_SESSION["Userlevel"]=="A"){ //ถ้าเป็น admin ให้กระโดดไปหน้า admin_page.php
 
