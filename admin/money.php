@@ -1,6 +1,6 @@
 <?php session_start();?>
 <?php 
-
+include_once '../con.php';
 if (!$_SESSION["UserID"]){  //check session
 
 	  Header("Location: ../index.php"); //ไม่พบผู้ใช้กระโดดกลับไปหน้า login form 
@@ -15,21 +15,19 @@ include_once 'head.php';
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">จัดผู้ใช้งาน</h1>
+            <h1 class="m-0">จัดจัดส่งแล้ว</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">Dashboard v1</li>
             </ol>
-            
           </div><!-- /.col -->
-          
         </div><!-- /.row -->
-        
       </div><!-- /.container-fluid -->
     </div>
-    <!-- Main content -->
+    <div>
+        <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <div class="row">
@@ -39,27 +37,25 @@ include_once 'head.php';
                 <h3 class="card-title">Bordered Table</h3>
               </div>
               <?php
-              $sql = "SELECT * FROM user ";
+              $sql = "SELECT * FROM money ";
               $result = $con->query($sql);
               
               if ($result->num_rows > 0) {
                 // output data of each row
                 
               ?>
-               <a class="btn btn-success mx-3 mt-3" href="inserform_user.php"> เพิ่มสินค้า </a>
-             
               <!-- /.card-header -->
               <div class="card-body">
                 <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th style="width: 10px">#</th>
-                      <th>Username</th>
-                      <th style="width: 200px">ชื่อ</th>
-                      <th >สถานะผู้ใช้</th>
-                      <th >ที่อยู่</th>
-                      <th >แก้ไข</th>
-                      <th >ลบ</th>
+                    <th style="width: 30px">#</th>
+                    <th >เลขที่คำสั่งซื้อ</th>
+                      <th>ชื่อผู้สั่งซื้อ</th>
+                      <th style="width: 200px">วันที่โอน</th>
+                      <th >เวลาโอน</th>
+                      <th >จำนวนเงิน</th>
+                      <th >สถานะ</th>
                     </tr>
                   </thead>
                   <?php while($row = $result->fetch_assoc()) {
@@ -68,14 +64,25 @@ include_once 'head.php';
                 ?>
                   <tbody>
                     <tr>
-                      <td><?php $num = $num+1; echo $num ?></td>
-                      <td><?php echo $row["Username"]; ?></td>
-                      <td><?php echo $row["Firstname"].' '.$row["Lastname"]; ?></td>
-                      <td><?php echo $row["Userlevel"]; ?></td>
-                      <td><?php echo $row["Address"]; ?></td>
-                      <td><a href="updateform_user.php?ID=<?php echo $row["ID"];?>" ><button class="btn  btn-info btn-sm">แก้ไข</button></a></td> 
-                      <td><a href="del_user.php?ID=<?php echo $row["ID"];?>" ><button class="btn  btn-danger btn-sm">ลบ</button></a></td> 
-                 
+                    <td><?php $run = $run+1;  echo $run; ?></td>
+                    <td><?php echo $row["OrderID"]; ?></td>
+                      <td><?php echo $row["ID_user"]; ?></td>
+                      <td><?php echo $row["date"]; ?></td>
+                      <td><?php echo $row["time"]; ?></td>
+                      <td><?php echo $row["money"]; ?></td>
+                      <td><?php $Status=$row["Status"]; 
+                      if ($Status==0){
+                        echo 'ยังไม่อนุมัติ';
+                      ?>  <form action="approve.php" method="post">
+                          <input type="hidden" name="OrderID" value="<?php echo $row["OrderID"]; ?>">
+                          <button type="submit">อนุมัติ</button>
+                      </form>
+                      <?php
+                       
+                      }else {
+                        echo 'อนุมัติแล้ว';
+                      }
+                       ?></td>
                     </tr>
                    <?php }
               } else {
@@ -87,7 +94,5 @@ include_once 'head.php';
               </div>
     </div>
 </div>
-
-    
 <?php include_once 'footer.php'; }
 ?>

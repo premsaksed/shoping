@@ -51,7 +51,7 @@
 
    <?php 
    include_once '../con.php';
-   $result = $con->query("SELECT COUNT(*) FROM orders");
+   $result = $con->query("SELECT COUNT(*) FROM orders where Status = 0");
    $row = $result->fetch_row();
    
     ?>
@@ -137,7 +137,25 @@
                 <span class="badge badge-info right"><?php echo $row[0]; ?></span>
               </p>
             </a>
-          </li><li class="nav-item">
+          </li>
+          <li class="nav-item">
+            <a href="money.php" class="nav-link">
+              <i class="nav-icon far ion ion-bag"></i>
+           
+              <p>
+              <?php 
+   include_once '../con.php';
+   $result = $con->query("SELECT COUNT(*) FROM money where Status = 0");
+   $row1 = $result->fetch_row();
+   
+    ?>
+                จัดการการชำระเงิน
+                <span class="badge badge-info right"><?php echo $row1[0]; ?></span>
+                <!-- <span class="badge badge-info right">2</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="oder.php" class="nav-link">
               <i class="nav-icon far ion ion-bag"></i>
            
@@ -161,6 +179,14 @@
             <i class="nav-icon far icon  ion-person-add"></i>
               <p>
                 จัดผู้ใช้งาน
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="pass.php" class="nav-link">
+            <i class="nav-icon far icon  ion-person-add"></i>
+              <p>
+                เปลี่ยนรหัสผ่าน
               </p>
             </a>
           </li>

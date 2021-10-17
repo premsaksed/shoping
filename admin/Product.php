@@ -34,58 +34,47 @@ include_once 'head.php';
               <div class="card-header">
                 <h3 class="card-title">Bordered Table</h3>
               </div>
+              <a class="btn btn-success mx-3 mt-3" href="inserform_product.php"> เพิ่มสินค้า </a>
+              <!-- /.card-header -->
+              <?php
+              $sql = "SELECT * FROM product ";
+              $result = $con->query($sql);
+              
+              if ($result->num_rows > 0) {
+                // output data of each row
+                
+              ?>
               <!-- /.card-header -->
               <div class="card-body">
                 <table class="table table-bordered">
                   <thead>
                     <tr>
                       <th style="width: 10px">#</th>
-                      <th>Task</th>
-                      <th>Progress</th>
-                      <th style="width: 40px">Label</th>
+                      <th>ชื่อสินค้า</th>
+                      <th style="width: 200px">ราคา</th>
+                      <th >รูป</th>
+                      <th >แก้ไข</th>
+                      <th >ลบ</th>
                     </tr>
                   </thead>
+                  <?php while($row = $result->fetch_assoc()) {
+                //   echo "id: " . $row["OrderID"]. " - Name: " . $row["OrderDate"]. " " . $row["Name"]. "<br>";
+                
+                ?>
                   <tbody>
                     <tr>
-                      <td>1.</td>
-                      <td>Update software</td>
-                      <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-danger">55%</span></td>
+                      <td><?php echo $row["ProductID"]; ?></td>
+                      <td><?php echo $row["ProductName"]; ?></td>
+                      <td><?php echo $row["Price"]; ?></td>
+                      <td align="center"><img height="100" src="../img/<?php echo $row["Picture"]; ?>" alt=""></td>
+                      <td><a href="updateform_product.php?ProductID=<?php echo $row["ProductID"];?>" ><button class="btn  btn-info btn-sm">แก้ไข</button></a></td> 
+                      <td><a href="del_product.php?ProductID=<?php echo $row["ProductID"];?>" ><button class="btn  btn-danger btn-sm">ลบ</button></a></td> 
                     </tr>
-                    <tr>
-                      <td>2.</td>
-                      <td>Clean database</td>
-                      <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-warning" style="width: 70%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-warning">70%</span></td>
-                    </tr>
-                    <tr>
-                      <td>3.</td>
-                      <td>Cron job running</td>
-                      <td>
-                        <div class="progress progress-xs progress-striped active">
-                          <div class="progress-bar bg-primary" style="width: 30%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-primary">30%</span></td>
-                    </tr>
-                    <tr>
-                      <td>4.</td>
-                      <td>Fix and squish bugs</td>
-                      <td>
-                        <div class="progress progress-xs progress-striped active">
-                          <div class="progress-bar bg-success" style="width: 90%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-success">90%</span></td>
-                    </tr>
+                   <?php }
+              } else {
+                echo "0 results";
+              }
+              $con->close(); ?>
                   </tbody>
                 </table>
               </div>

@@ -53,6 +53,7 @@ include_once 'head.php';
                       <th>ชื่อผู้สั่งซื้อ</th>
                       <th style="width: 200px">วันที่</th>
                       <th >สถานะการส่ง</th>
+                      <th >หมายเลขพัสดุ</th>
                     </tr>
                   </thead>
                   <?php while($row = $result->fetch_assoc()) {
@@ -64,7 +65,8 @@ include_once 'head.php';
                       <td><?php echo $row["OrderID"]; ?></td>
                       <td><?php echo $row["Name"]; ?></td>
                       <td><?php echo $row["OrderDate"]; ?></td>
-                      <td><?php echo $row["status"]; ?></td>
+                      <td>จัดส่งแล้ว</td>
+                      <td><?php echo $row["track"]; ?></td>
                       
                     </tr>
                    <?php }

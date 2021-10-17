@@ -1,12 +1,3 @@
-
-<?php session_start();?>
-<?php 
- 
-if (!$_SESSION["UserID"]){
- 
-	  Header("Location: index1.php");
- 
-}else{?>
 <?php
 include_once 'head.php';
 ?>
@@ -61,11 +52,12 @@ if (!$objQuery) {
                             <h5 class="card-title"><?php echo $objResult["ProductName"]; ?></h5>
                             <p class="card-text">฿ <?php echo $objResult["Price"]; ?></p>
                             <div>
-                                <input type="hidden" name="txtProductID" value="<?php echo $objResult["ProductID"]; ?>" size="2">
+                                <!-- <input type="hidden" name="txtProductID" value="<?php echo $objResult["ProductID"]; ?>" size="2">
                                 <input type="text" name="txtQty" value="1" size="2">
-                                <input class="btn btn-outline-warning mx-3" type="submit" value="Add"> 
+                                <input class="btn btn-outline-warning mx-3" type="submit" value="Add">  -->
             </form>
     </div>
+   
 </div>
 </div>
 </div>
@@ -89,5 +81,4 @@ mysqli_close($objCon);
 <br><br>
 <?php
 include_once 'footer.php';
-    }
 ?>

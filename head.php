@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,9 +21,22 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="index.php">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="loginform.php">เข้าสู่ระบบ</a>
-        </li>
+        <?php session_start();?>
+<?php 
+ 
+if (!$_SESSION["UserID"]){
+  ?>
+  <li class="nav-item">
+  <a class="nav-link" href="loginform.php">เข้าสู่ระบบ</a>
+</li>
+ <?php 
+}else{ ?>
+  <a href="logout.php" class="nav-link">
+    ออกจากระบบ
+  
+</a>
+
+      <?php  } ?>
         <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
@@ -42,7 +56,7 @@
       <div class="mx-5">
 
      
-      <a href="show.php"> <img src="img/cart.svg" width="50" alt=""> </a> 
+      <a href="show.php"> <img src="img/cart.svg" width="40" alt=""> </a> 
        </div><!-- <form class="d-flex">
       
       <a href="clear.php">Clear Cart</a>  
