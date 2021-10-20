@@ -62,7 +62,7 @@ $objResult = $objResult = mysqli_fetch_array($objQuery, MYSQLI_ASSOC);
     ?>
       <tr>
         <td><?= $objResult2["ProductID"]; ?></td>
-        <td><?= $objResult3["ProductName"]; ?></td>
+        <td><?= $objResult["ProductName"]; ?></td>
         <td><?= $objResult3["Price"]; ?></td>
         <td><?= $objResult2["Qty"]; ?></td>
         <td><?= number_format($Total, 2); ?></td>
