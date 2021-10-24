@@ -50,32 +50,41 @@
 					<a href="#" class="logo">
 						<img src="images/icons/logo-01.png" alt="IMG-LOGO">
 					</a>
+					<?php session_start(); ?>
+          <?php
 
-					<!-- Menu desktop -->
-					<div class="menu-desktop">
+          if (!$_SESSION["UserID"]) {
+          ?>
+	<div class="menu-desktop">
 						<ul class="main-menu">
 							<li class="active-menu">
 								<a href="index.php">Home</a>
 								
 							</li>
-
+<?php
+          } else { ?>
+					<!-- Menu desktop -->
+				
+					<ul class="main-menu">
+							<li class="active-menu">
+								<a href="index.php">Home</a>
+								
+							</li>
 							<li>
-								<a href="product.php">Shop</a>
+								<a href="myorder.php">ออเดอร์ของฉัน</a>
 							</li>
-
-							<li class="label1" data-label1="hot">
-								<a href="shoping-cart.php">Features</a>
+							<li>
+								<a href="pass.php">เปลี่ยนรหัสผ่าน</a>
 							</li>
-
+							<li >
+              <a href="../logout.php" >
+                ออกจากระบบ
+            </li>
 							
 
-							<li>
-								<a href="about.php">About</a>
-							</li>
+							<?php  } ?>	
 
-							<li>
-								<a href="contact.php">Contact</a>
-							</li>
+							
 						</ul>
 					</div>	
 

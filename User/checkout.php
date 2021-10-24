@@ -105,8 +105,7 @@ include_once 'connect.php';
 						<?php
 						if ($SumTotal > 0) {
 						?>
-							 <a class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5"  href="checkout.php">สั่งซื้อ</a>
-					
+							
 				<?php
 						}
 				?>
@@ -201,7 +200,7 @@ $row1 = $result->fetch_row();
 				</div>
 
 				<button type="submit" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-					Proceed to Checkout
+					สั่งซื้อ
 				</button>
 			</div>
 		</div>

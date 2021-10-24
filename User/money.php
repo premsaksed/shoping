@@ -11,13 +11,14 @@ $iduser = $_SESSION['UserID'];
         <div class="container">
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto">
+              <br><br><br>
               <h3 class="login-heading mb-4">ยืนยันการชำระเงิน</h3>
 
               <!-- Sign In Form -->
               <form action="insert_money.php" method="post">
                 <div class="form-floating mb-3">
                   <input type="text" name="OrderID" value="<?php echo $OrderID; ?>" class="form-control" id="floatingInput" placeholder="">
-                  <input type="text" name="ID_user" value="<?php echo $iduser; ?>" class="form-control" id="floatingInput" placeholder="">
+                  <input type="hidden" name="ID_user" value="<?php echo $iduser; ?>" class="form-control" id="floatingInput" placeholder="">
                   <label for="floatingInput">รหัสใบเสร็จ</label>
                 </div>
                 <div class="form-floating mb-3">
